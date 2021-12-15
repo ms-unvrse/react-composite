@@ -1,0 +1,43 @@
+{
+  "root": "libs/react-composite",
+  "sourceRoot": "libs/react-composite/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/react-composite",
+        "tsConfig": "libs/react-composite/tsconfig.lib.json",
+        "project": "libs/react-composite/package.json",
+        "entryFile": "libs/react-composite/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "assets": [
+          {
+            "glob": "libs/react-composite/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/react-composite/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/react-composite"],
+      "options": {
+        "jestConfig": "libs/react-composite/jest.config.js",
+        "passWithNoTests": true,
+        "coverage": false
+      }
+    }
+  }
+}
